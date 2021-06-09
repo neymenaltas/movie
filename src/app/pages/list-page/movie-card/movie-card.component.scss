@@ -1,0 +1,53 @@
+.card-area {
+  span {
+    display: none;
+  }
+  .delete-button{
+    display: none;
+  }
+  background: 50% 50% no-repeat;
+  background-size: 300px;
+  height: 350px;
+  width: 300px;
+
+  .card-area-opacity {
+    height: 100%;
+    position: relative;
+    &:hover {
+      background-color: black;
+      opacity: 0.9;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .delete-button {
+        widht: 32px;
+        height: 32px;
+        font-size: 12px;
+        display: block;
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        border: 0px;
+        border-radius: 50%;
+        background: red;
+        color: white;
+        cursor: pointer;
+      }
+
+      .movie-title {
+        display: block;
+        color: white;
+        font-size: large;
+        font-family: Arial;
+      }
+      .movie-rating {
+        display: block;
+        color: #f5c518;
+        font-size: 100px;
+      }
+    }
+  }
+}

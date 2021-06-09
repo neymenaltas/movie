@@ -1,0 +1,7 @@
+<div class="card-area" [routerLink]="['../form']" [queryParams]="{id: movie.id}" [ngStyle]="{'background-image': 'url(\' ' + movie.poster}">
+  <div class="card-area-opacity">
+    <span class="movie-title">{{movie.title}}</span>
+    <span class="movie-rating">{{movie.rating}}</span>
+    <button class="delete-button" (click)="handler.deleteItem($event, movie.id)">Sil</button>
+  </div>
+</div>

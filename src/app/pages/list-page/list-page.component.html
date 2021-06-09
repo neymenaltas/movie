@@ -1,0 +1,31 @@
+<div class="page-container">
+    <div class="input-area">
+      <mat-card class="search-filter-input">
+        <input class="search-input" type="search" id="searchText" placeholder="Aramaya Başla"
+               [(ngModel)]="handler.searchText"
+               (ngModelChange)="handler.searchTextUpdate$.next($event)">
+      </mat-card>
+    </div>
+    <div class="sorting-area">
+      <mat-form-field appearance="fill">
+        <mat-label>Sıralama</mat-label>
+        <mat-select (selectionChange)="handler.changeSorting($event)">
+          <mat-option *ngFor="let sortValue of (handler.sortingValues)" [value]="sortValue">
+            {{sortValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  <div *ngIf="(!((handler.movies$ | async).length)) && (handler.isLoaded$ | async)" class="no-movie-area">
+    <span>Henüz içerik girilmedi.</span>
+  </div>
+  <div *ngIf="(handler.isLoading$ | async)" class="spinner-area">
+    <mat-spinner ></mat-spinner>
+  </div>
+  <div class="movie-area">
+    <app-movie-card *ngFor="let movie of (handler.movies$ | async)" [movie]="movie"></app-movie-card>
+  </div>
+  <div *ngIf="!(handler.isLastPage$ | async) && !(handler.isLoading$ | async)" class="show-more-area">
+    <button class="show-more-button" (click)="handler.loadMore()">Daha Fazla Göster</button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="form-page-container">
+  <div *ngIf='!this.handler.id' class="search-area">
+    <div class="input-area">
+      <mat-card class="search-filter-input">
+        <input class="search-input" type="search" id="searchText" placeholder="Aramaya Başla"
+               [(ngModel)]="handler.searchText"
+               (ngModelChange)="handler.searchTextUpdate$.next($event)">
+      </mat-card>
+    </div>
+    <div *ngIf="(handler.isSearching$ | async)" class="spinner-area">
+      <mat-spinner ></mat-spinner>
+    </div>
+    <div class="search-results" *ngFor="let movie of (handler.searchedMovies$) | async" (click)="handler.selectMovie(movie)">
+      <div class="search-result">
+        <img [src]="movie.poster" width="50" height="50" />
+        <span>{{movie.title}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <mat-form-field>
+      <mat-label>Adı</mat-label>
+      <input type="text" matInput [formControl]="handler.titleValidator" [ngModel]="handler.selectedMovie.title"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Görseli</mat-label>
+      <input type="text" matInput [formControl]="handler.posterValidator" [ngModel]="handler.selectedMovie.poster"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Puanı</mat-label>
+      <input type="number" matInput placeholder="Amount" [formControl]="handler.ratingValidator" [ngModel]="handler.selectedMovie.rating" required pattern="\d+"/>
+      <mat-error *ngIf="handler.ratingValidator.invalid">Puan 0 ile 10 arasında tam sayı olarak girilmelidir.</mat-error>
+    </mat-form-field>
+    <button class="submit-button" (click)="handler.submit()">Kaydet</button>
+  </div>
+</div>
