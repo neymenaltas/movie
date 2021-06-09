@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  background: #c5c3c4;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    margin-left: 20px;
+
+    .logo-img {
+      height: 60%;
+      cursor: pointer;
+    }
+  }
+
+  .add-button {
+    background: #f5c518;
+    border: 0;
+    width: 100px;
+    height: 40%;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}

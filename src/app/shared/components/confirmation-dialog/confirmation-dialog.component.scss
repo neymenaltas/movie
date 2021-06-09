@@ -1,0 +1,22 @@
+.buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-around;
+  .positive-button {
+    background: red;
+    width: 100px;
+    height: 32px;
+    color: white;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .negative-button {
+    width: 100px;
+    height: 32px;
+    border: 0;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+}
+
