@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {Movie} from "../../models/movie.model";
+import {Movie} from '../../models/movie.model';
 
 export enum FormActionTypes {
   LoadSelectedMovie = '[Form] Load Selected Movie',

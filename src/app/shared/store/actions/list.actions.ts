@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import {Movie} from "../../models/movie.model";
 
 export enum ListActionTypes {
   LoadList = '[List] Load List',

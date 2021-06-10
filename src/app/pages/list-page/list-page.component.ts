@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ListPageHandler} from "./list-page.handler";
+import {ListPageHandler} from './list-page.handler';
 
 @Component({
   selector: 'app-list-page',

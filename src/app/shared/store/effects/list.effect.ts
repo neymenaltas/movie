@@ -3,9 +3,8 @@ import { Observable, of} from 'rxjs';
 import {map, catchError, switchMap, mergeMap, exhaustMap, tap} from 'rxjs/operators';
 import * as listActions from '../actions/list.actions';
 import {ofType, Actions, createEffect} from '@ngrx/effects';
-import {ListService} from "../../services/list.service";
-import {ToastrService} from "ngx-toastr";
-import * as formActions from "../actions/form.actions";
+import {ListService} from '../../services/list.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
 export class ListEffects {

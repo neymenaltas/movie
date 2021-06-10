@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of} from 'rxjs';
+import { of} from 'rxjs';
 import {map, catchError, switchMap, mergeMap, exhaustMap, tap} from 'rxjs/operators';
 import * as formActions from '../actions/form.actions';
 import {ofType, Actions, createEffect} from '@ngrx/effects';
-import {FormService} from "../../services/form.service";
-import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
+import {FormService} from '../../services/form.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class FormEffects {

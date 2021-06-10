@@ -1,20 +1,20 @@
-import {Handler} from "../../shared/handler/base.handler";
-import {AppState} from "../../shared/store/app.state";
-import {select, Store} from "@ngrx/store";
-import {ElementRef, Injectable, Input, ViewChild} from "@angular/core";
-import {Movie} from "../../shared/models/movie.model";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Handler} from '../../shared/handler/base.handler';
+import {AppState} from '../../shared/store/app.state';
+import {select, Store} from '@ngrx/store';
+import {ElementRef, Injectable, Input, ViewChild} from '@angular/core';
+import {Movie} from '../../shared/models/movie.model';
+import {ActivatedRoute, Router} from '@angular/router';
 import {
   AddMovieAction,
   LoadSelectedMovieAction,
   SearchMovieAction,
   SetSearchListEmptyAction,
   UpdateMovieAction
-} from "../../shared/store/actions/form.actions";
-import { Observable, Subject} from "rxjs";
-import * as formSlice from "../../shared/store/reducers/form.reducer";
-import {debounceTime, distinctUntilChanged, take, takeUntil} from "rxjs/operators";
-import {FormControl, Validators} from "@angular/forms";
+} from '../../shared/store/actions/form.actions';
+import { Observable, Subject} from 'rxjs';
+import * as formSlice from '../../shared/store/reducers/form.reducer';
+import {debounceTime, distinctUntilChanged, take, takeUntil} from 'rxjs/operators';
+import {FormControl, Validators} from '@angular/forms';
 
 @Injectable()
 export class FormPageHandler extends Handler {

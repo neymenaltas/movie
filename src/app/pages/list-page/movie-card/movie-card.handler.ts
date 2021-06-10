@@ -1,11 +1,11 @@
-import {Handler} from "../../../shared/handler/base.handler";
-import {AppState} from "../../../shared/store/app.state";
-import {Store} from "@ngrx/store";
-import {Injectable} from "@angular/core";
-import {Movie} from "../../../shared/models/movie.model";
-import {MatDialog} from "@angular/material/dialog";
-import {ConfirmationDialogComponent} from "../../../shared/components/confirmation-dialog/confirmation-dialog.component";
-import {DeleteMovieAction} from "../../../shared/store/actions/list.actions";
+import {Handler} from '../../../shared/handler/base.handler';
+import {AppState} from '../../../shared/store/app.state';
+import {Store} from '@ngrx/store';
+import {Injectable} from '@angular/core';
+import {Movie} from '../../../shared/models/movie.model';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmationDialogComponent} from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import {DeleteMovieAction} from '../../../shared/store/actions/list.actions';
 
 @Injectable()
 export class MovieCardHandler extends Handler {

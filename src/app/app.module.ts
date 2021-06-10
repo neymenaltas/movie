@@ -14,19 +14,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {fakeBackendProvider} from "./shared/fake-backend";
 import {ListEffects} from "./shared/store/effects/list.effect";
 import {EffectsModule} from "@ngrx/effects";
-import {MatCardModule} from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormEffects} from "./shared/store/effects/form.effect";
-import {MatInputModule} from "@angular/material/input";
-import {MatDialogModule} from "@angular/material/dialog";
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
 import {ToastrModule} from "ngx-toastr";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {MaterialModule} from "./shared/modules/material.module";
 
 @NgModule({
   declarations: [
@@ -52,17 +46,11 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     EffectsModule.forFeature(
       [ListEffects, FormEffects],
     ),
-    MatCardModule,
     FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatDialogModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    MatProgressSpinnerModule,
-    MatProgressBarModule,
     InfiniteScrollModule,
+    MaterialModule
   ],
   providers: [fakeBackendProvider],
   bootstrap: [AppComponent]

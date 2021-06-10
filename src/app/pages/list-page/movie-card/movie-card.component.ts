@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MovieCardHandler} from "./movie-card.handler";
-import {Movie} from "../../../shared/models/movie.model";
+import {MovieCardHandler} from './movie-card.handler';
+import {Movie} from '../../../shared/models/movie.model';
 
 
 @Component({

@@ -1,15 +1,15 @@
-import {Handler} from "../../shared/handler/base.handler";
-import {AppState} from "../../shared/store/app.state";
-import {ActionsSubject, select, Store} from "@ngrx/store";
-import {Injectable} from "@angular/core";
+import {Handler} from '../../shared/handler/base.handler';
+import {AppState} from '../../shared/store/app.state';
+import {ActionsSubject, select, Store} from '@ngrx/store';
+import {Injectable} from '@angular/core';
 import * as listSlice from '../../shared/store/reducers/list.reducer'
-import {combineLatest, Observable, Subject} from "rxjs";
-import {Movie} from "../../shared/models/movie.model";
-import {debounceTime, distinctUntilChanged, take, takeUntil} from "rxjs/operators";
+import {combineLatest, Observable, Subject} from 'rxjs';
+import {Movie} from '../../shared/models/movie.model';
+import {debounceTime, distinctUntilChanged, take, takeUntil} from 'rxjs/operators';
 import {
   ChangeFilterAction,
   LoadListAction, SetListEmptyAction
-} from "../../shared/store/actions/list.actions";
+} from '../../shared/store/actions/list.actions';
 
 @Injectable()
 export class ListPageHandler extends Handler {
@@ -18,7 +18,7 @@ export class ListPageHandler extends Handler {
 
   public searchTextUpdate$: Subject<string> = new Subject<string>();
 
-  public sortingValues: string[] = ["Varsayılan", "Azalan", "Artan"];
+  public sortingValues: string[] = ['Varsayılan', 'Azalan', 'Artan'];
 
   public movies$: Observable<Movie[]> = this.appState$.pipe(
     select(listSlice.getMovies),

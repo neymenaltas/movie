@@ -1,7 +1,7 @@
-import {FormActions, FormActionTypes} from "../actions/form.actions";
-import {AppState} from "../app.state";
-import {createSelector} from "@ngrx/store";
-import {FormState} from "../state-models/form-state.model";
+import {FormActions, FormActionTypes} from '../actions/form.actions';
+import {AppState} from '../app.state';
+import {createSelector} from '@ngrx/store';
+import {FormState} from '../state-models/form-state.model';
 
 const initialState: FormState = {
   loading: false,

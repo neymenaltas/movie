@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'form', component: FormPageComponent },
   { path: 'form/:id', component: FormPageComponent },
   { path: 'list', component: ListPageComponent },
+  { path: '',   redirectTo: '/list', pathMatch: 'full' },
 ];
 
 @NgModule({

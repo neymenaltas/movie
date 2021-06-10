@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormPageHandler} from "./form-page.handler";
+import {FormPageHandler} from './form-page.handler';
 
 @Component({
   selector: 'app-form-page',

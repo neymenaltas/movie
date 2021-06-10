@@ -1,7 +1,7 @@
 import { ListState } from '../state-models/list-state.model';
-import {ListActions, ListActionTypes} from "../actions/list.actions";
-import {AppState} from "../app.state";
-import {createSelector} from "@ngrx/store";
+import {ListActions, ListActionTypes} from '../actions/list.actions';
+import {AppState} from '../app.state';
+import {createSelector} from '@ngrx/store';
 
 const initialState: ListState = {
   loading: false,
