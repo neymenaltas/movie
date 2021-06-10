@@ -90,6 +90,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function addMovie() {
+      if (JSON.parse(localStorage.getItem('movies')).find(movie => movie.title === body.movie.title)) {
+        return error('Bu film zaten ekli');
+      }
       let movie= {
         ...body.movie,
         id: uuidv4(),

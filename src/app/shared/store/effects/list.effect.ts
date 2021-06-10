@@ -56,7 +56,7 @@ export class ListEffects {
   public deleteMovieFail$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(listActions.ListActionTypes.DeleteMovieFail),
-        tap(() => this.toastService.error('Film silinirken bir sıkıntı oluştu.'))
+        tap((action: any) => this.toastService.error(action.payload))
       )},
     {dispatch: false}
   );

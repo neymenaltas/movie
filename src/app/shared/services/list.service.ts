@@ -34,7 +34,7 @@ export class ListService {
   }
 
   private handleError(err) {
-    this.errorMessage = `${err.status} : ${err.body.error}`;
+    this.errorMessage = `${err.error.message}`;
     return throwError(this.errorMessage);
   }
 }

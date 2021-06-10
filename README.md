@@ -1,3 +1,14 @@
+# For running
+
+Run commands in this order
+npm i
+npm i @angular/cdk
+ng serve
+
+#Requirements
+
+Node version should be minimum v12
+
 # Movie
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
