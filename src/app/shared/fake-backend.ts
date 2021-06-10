@@ -4,7 +4,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 
-// array in local storage for registered users
 let movies = JSON.parse(localStorage.getItem('movies')) || [];
 
 @Injectable()
@@ -27,7 +26,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return addMovie();
         case url.endsWith('/search') && method === 'GET':
           return searchMovies();
-        case !url.endsWith('/movies') && method === 'GET':
+        case !url.startsWith('http://localhost:4000/movies/null') && !url.startsWith('http://www.omdbapi.com') && !url.endsWith('/movies') && method === 'GET':
           return getMovieById();
         case !url.endsWith('/movies') && method === 'PUT':
           return updateMovie();
@@ -40,14 +39,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function getMovies() {
+      if (JSON.parse(localStorage.getItem('movies')) === null ) {
+        localStorage.setItem('movies', JSON.stringify([]));
+      }
       const params = request.params;
       const page = params.get('page');
       const searchTerm = params.get('searchTerm');
       const sorting = params.get('sorting');
-      movies = JSON.parse(localStorage.getItem('movies')) || [];
 
-      if (searchTerm !== 'null') {
-        movies = movies.filter(movie => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      if (searchTerm !== 'null' && searchTerm !== 'Varsayılan') {
+        movies = JSON.parse(localStorage.getItem('movies')).filter(movie => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      } else {
+        movies = JSON.parse(localStorage.getItem('movies')) || [];
       }
 
       if(sorting !== 'null' && sorting !== 'Varsayılan') {
@@ -91,7 +94,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         ...body.movie,
         id: uuidv4(),
         createdAt: new Date(),
-        poster: body.movie.poster !== undefined ? body.movie.poster : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
+        poster: body.movie.poster !== undefined ? body.movie.poster : 'https://image.winudf.com/v2/image/Y29tLm5vdC5mb3VuZGRfc2NyZWVuXzBfMTUxNzI3OTU0OV8wMzU/screen-0.jpg?fakeurl=1&type=.jpg'
       };
 
       movies.unshift(movie);
@@ -105,7 +108,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const params = request.params;
       const id = params.get('id');
 
-      movies = movies.filter(x => x.id !== id);
+      movies = JSON.parse(localStorage.getItem('movies')).filter(x => x.id !== id);
       localStorage.setItem('movies', JSON.stringify(movies));
       return ok();
     }

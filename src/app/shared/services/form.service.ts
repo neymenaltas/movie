@@ -28,9 +28,7 @@ export class FormService {
   }
 
   searchMovies(searchTerm) {
-    let params = new HttpParams();
-    params = params.set('searchTerm', searchTerm);
-    return this.http.get<any>(environment.apiUrl + '/search', {params})
+    return this.http.get<any>('http://www.omdbapi.com/?apikey=' + 'c5575532' + '&s=' + searchTerm)
       .pipe(
         catchError(this.handleError)
       );

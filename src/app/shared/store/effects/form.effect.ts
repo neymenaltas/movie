@@ -40,11 +40,10 @@ export class FormEffects {
       ofType(formActions.FormActionTypes.SearchMovie),
       switchMap( (action: any) =>
         this.formService.searchMovies(action.payload).pipe(
-          map(res => new formActions.SearchMovieSuccessAction(res.map(item => {
+          map(res => new formActions.SearchMovieSuccessAction(res.Search.map(item => {
               return {
-                title: item.title,
-                poster: item.poster,
-                rating: item.rating
+                title: item.Title,
+                poster: item.Poster,
               }
             })
           )),

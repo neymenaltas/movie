@@ -16,6 +16,9 @@
         <span>{{movie.title}}</span>
       </div>
     </div>
+    <div class='not-found-area' *ngIf="(handler.isSearchFailed$ | async)">
+      <span>Film bulunamadı</span>
+    </div>
   </div>
   <div class="form">
     <mat-form-field>

@@ -14,6 +14,13 @@
       width: 100%;
       height: 30vh;
     }
+    .not-found-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 30vh;
+    }
     .search-results {
       display: flex;
       justify-content: center;
@@ -23,6 +30,11 @@
         width: 50%;
         display: flex;
         align-items: center;
+
+        span {
+          margin-left: 12px;
+        }
+
         &:hover {
           background: lightgrey;
           cursor: pointer;

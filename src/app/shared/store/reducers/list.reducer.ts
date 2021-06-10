@@ -72,7 +72,7 @@ export function reducer(state = initialState, action: ListActions) {
         ],
         page: action.payload.page,
         total: action.payload.total,
-        isLast: (+action.payload.page+1)*10 > action.payload.total,
+        isLast: (+action.payload.page+1)*10 >= action.payload.total,
         loading: false,
         loaded: true,
         loadFailed: false,
@@ -105,7 +105,8 @@ export function reducer(state = initialState, action: ListActions) {
     case ListActionTypes.DeleteMovieSuccess: {
       return {
         ...state,
-        movieList: state.movieList.filter(movie => movie.id !== action.payload)
+        movieList: state.movieList.filter(movie => movie.id !== action.payload),
+        total: state.movieList.length
       }
     }
     default: {

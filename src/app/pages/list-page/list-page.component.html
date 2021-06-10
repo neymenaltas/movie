@@ -16,13 +16,22 @@
         </mat-select>
       </mat-form-field>
     </div>
-  <div *ngIf="(!((handler.movies$ | async).length)) && (handler.isLoaded$ | async)" class="no-movie-area">
+  <div *ngIf="(!((handler.movies$ | async).length)) && (handler.isLoaded$ | async) && (!(handler.searchTerm$ | async).length)" class="no-movie-area">
     <span>Henüz içerik girilmedi.</span>
+  </div>
+  <div *ngIf="(!((handler.movies$ | async).length)) && (handler.isLoaded$ | async) && ((handler.searchTerm$ | async).length)" class="no-movie-area">
+    <span>Filtreli içerik bulunamadı</span>
   </div>
   <div *ngIf="(handler.isLoading$ | async)" class="spinner-area">
     <mat-spinner ></mat-spinner>
   </div>
-  <div class="movie-area">
+  <div class="movie-area"
+       infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="500"
+       (scrolled)="handler.loadMore()"
+       [scrollWindow]="false"
+       *ngIf="(handler.isLoaded$ | async)">
     <app-movie-card *ngFor="let movie of (handler.movies$ | async)" [movie]="movie"></app-movie-card>
   </div>
   <div *ngIf="!(handler.isLastPage$ | async) && !(handler.isLoading$ | async)" class="show-more-area">

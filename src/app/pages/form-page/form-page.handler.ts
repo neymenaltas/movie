@@ -48,8 +48,8 @@ export class FormPageHandler extends Handler {
     takeUntil(this._endSubscriptions$)
   );
 
-  public isSearched$: Observable<boolean> = this.appState$.pipe(
-    select(formSlice.getIsSearched),
+  public isSearchFailed$: Observable<boolean> = this.appState$.pipe(
+    select(formSlice.getIsSearchFailed),
     takeUntil(this._endSubscriptions$)
   );
 
@@ -109,7 +109,7 @@ export class FormPageHandler extends Handler {
 
   public selectMovie(movie) {
     this.selectedMovie = movie;
-    this.appState$.dispatch(new SetSearchListEmptyAction({}))
+    this.appState$.dispatch(new SetSearchListEmptyAction(null))
   }
 
 }

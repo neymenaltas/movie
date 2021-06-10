@@ -36,6 +36,11 @@ export const getIsSearched = createSelector(
   (state: FormState) => state.searched
 );
 
+export const getIsSearchFailed = createSelector(
+  selectFormState,
+  (state: FormState) => state.searchFailed
+);
+
 
 export function reducer(state = initialState, action: FormActions) {
   switch (action.type) {
@@ -71,6 +76,15 @@ export function reducer(state = initialState, action: FormActions) {
         searching: false,
         searched: true,
         searchFailed: false,
+      };
+    }
+    case FormActionTypes.SearchMovieFail:{
+      return {
+        ...state,
+        searchedMovies: null,
+        searching: false,
+        searched: false,
+        searchFailed: true,
       };
     }
     case FormActionTypes.SetSearchListEmpty: {

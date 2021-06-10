@@ -26,6 +26,7 @@ import { ConfirmationDialogComponent } from './shared/components/confirmation-di
 import {ToastrModule} from "ngx-toastr";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    InfiniteScrollModule,
   ],
   providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
