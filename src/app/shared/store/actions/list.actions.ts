@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import {Movie} from '../../models/movie.model';
 
 export enum ListActionTypes {
   LoadList = '[List] Load List',
@@ -38,7 +39,7 @@ export class SetListEmptyAction implements Action {
 
 export class DeleteMovieAction implements Action {
   readonly type: string = ListActionTypes.DeleteMovie;
-  constructor(public payload: string) {}
+  constructor(public payload: Movie) {}
 }
 
 export class DeleteMovieSuccessAction implements Action {

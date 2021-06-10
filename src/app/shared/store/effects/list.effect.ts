@@ -38,7 +38,7 @@ export class ListEffects {
     return this.actions$.pipe(
       ofType(listActions.ListActionTypes.DeleteMovie),
       switchMap( (action: any) =>
-        this.listService.deleteMovie(action.payload).pipe(
+        this.listService.deleteMovie(action.payload.id).pipe(
           map(res => new listActions.DeleteMovieSuccessAction(action.payload)),
           catchError(err => of(new listActions.DeleteMovieFailAction(err)))
         )
@@ -48,7 +48,7 @@ export class ListEffects {
   public deleteMovieSuccess$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(listActions.ListActionTypes.DeleteMovieSuccess),
-        tap(() => this.toastService.success('Film başarıyla silindi.'))
+        tap((action: any) => this.toastService.success(`${action.payload.title} filmi başarıyla silindi.`))
       )},
     {dispatch: false}
   );

@@ -105,7 +105,7 @@ export function reducer(state = initialState, action: ListActions) {
     case ListActionTypes.DeleteMovieSuccess: {
       return {
         ...state,
-        movieList: state.movieList.filter(movie => movie.id !== action.payload),
+        movieList: state.movieList.filter(movie => movie.id !== action.payload.id),
         total: state.movieList.length
       }
     }

@@ -17,12 +17,12 @@ export class MovieCardHandler extends Handler {
     super(appState$);
   }
 
-  public deleteItem(event, id: string) {
+  public deleteItem(event, movie: Movie) {
     event.stopPropagation();
-    this.openDialog(id);
+    this.openDialog(movie);
   }
 
-  openDialog(id: string): void {
+  openDialog(movie: Movie): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '400px',
       data: {title: `${this.movie.title} filmini listeden çıkarmak istediğinizden emin misiniz?`}
@@ -30,7 +30,7 @@ export class MovieCardHandler extends Handler {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.appState$.dispatch(new DeleteMovieAction(id))
+        this.appState$.dispatch(new DeleteMovieAction(movie))
       }
     });
   }

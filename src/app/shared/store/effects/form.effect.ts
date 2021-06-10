@@ -29,7 +29,7 @@ export class FormEffects {
       ofType(formActions.FormActionTypes.UpdateMovie),
       switchMap( (action: any) =>
         this.formService.updateMovie(action.payload).pipe(
-          map(res => new formActions.UpdateMovieSuccessAction(res)),
+          map(res => new formActions.UpdateMovieSuccessAction(action.payload)),
           catchError(err => of(new formActions.UpdateMovieFailAction(err)))
         )
       )
@@ -57,7 +57,7 @@ export class FormEffects {
       ofType(formActions.FormActionTypes.AddMovie),
       switchMap( (action: any) =>
         this.formService.addMovie(action.payload).pipe(
-          map(res => new formActions.AddMovieSuccessAction(res)),
+          map(res => new formActions.AddMovieSuccessAction(action.payload)),
           catchError(err => of(new formActions.AddMovieFailAction(err)))
         )
       )
@@ -66,8 +66,9 @@ export class FormEffects {
   public addMovieSuccess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(formActions.FormActionTypes.AddMovieSuccess),
-      tap(() => {
-        this.toastService.success('Film başarıyla eklendi.')
+      tap((action: any) => {
+        console.log(action.payload);
+        this.toastService.success(`${action.payload.title} filmi başarıyla eklendi.`);
         this.router.navigate(['/list']);
       })
     )},
@@ -85,8 +86,8 @@ export class FormEffects {
   public updateMovieSuccess$ = createEffect(() => {
       return this.actions$.pipe(
         ofType(formActions.FormActionTypes.UpdateMovieSuccess),
-        tap(() => {
-          this.toastService.success('Film başarıyla güncellendi.');
+        tap((action: any) => {
+          this.toastService.success(`${action.payload.title} filmi başarıyla güncellendi.`);
           this.router.navigate(['/list']);
         })
       )},
